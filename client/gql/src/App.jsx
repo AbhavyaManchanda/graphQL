@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { useQuery, useMutation, gql } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client/react";
 
 const GET_USERS = gql`
   query GetUsers {
@@ -64,7 +65,7 @@ function App() {
 
   if (getUsersLoading) return <p> Data loading...</p>;
 
-  if (getUsersError) return <p> Error: {error.message}</p>;
+  if (getUsersError) return <p> Error: {getUsersError.message}</p>;
 
   const handleCreateUser = async () => {
     console.log(newUser);
