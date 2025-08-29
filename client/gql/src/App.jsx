@@ -37,9 +37,12 @@ const CREATE_USER = gql`
 `;
 
 function App() {
+
   const [newUser, setNewUser] = useState({});
 
   const {
+    
+    
     data: getUsersData,
 
     error: getUsersError,
@@ -57,7 +60,7 @@ function App() {
     = useQuery(
     GET_USER_BY_ID,
     {
-      variables: { id: "2" },
+      variables: { id:"1"},
     }
   );
 
@@ -73,7 +76,7 @@ function App() {
       variables: {
         name: newUser.name,
         age: Number(newUser.age),
-        isMarried: false,
+        isMarried: Boolean(newUser.isMarried),
       },
     });
   };
@@ -94,11 +97,18 @@ function App() {
             setNewUser((prev) => ({ ...prev, age: e.target.value }))
           }
         />
+        <input
+          placeholder="isMarried..."
+          type="boolean"
+          onChange={(e) =>
+            setNewUser((prev) => ({ ...prev, isMarried: e.target.value }))
+          }
+        />
         <button onClick={handleCreateUser}> Create User</button>
       </div>
 
       <div>
-        {getUserByIdLoading ? ( 
+        {getUserByIdLoading ? (
           <p> Loading user...</p>
         ) : (
           <>

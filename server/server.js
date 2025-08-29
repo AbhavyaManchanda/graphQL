@@ -32,7 +32,9 @@ const typeDefs = `
 
 
 const resolvers = {
+
     Query: {
+        
         getUsers: () => {
             return users;
         },
