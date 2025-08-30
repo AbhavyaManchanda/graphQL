@@ -9,6 +9,14 @@ const users = [
 
 const typeDefs = `
 
+    type User{
+        id:ID  
+        name:String
+        age:Int
+        isMarried:Boolean
+    
+    }
+
     type Query{
         getUsers: [User]
         getUserById(id:ID!): User
@@ -20,15 +28,8 @@ const typeDefs = `
     
     }
 
-    type User{
-        id:ID  
-        name:String
-        age:Int
-        isMarried:Boolean
-    
-    }
 
-`
+`;
 
 
 const resolvers = {

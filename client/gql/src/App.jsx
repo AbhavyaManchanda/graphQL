@@ -14,6 +14,7 @@ const GET_USERS = gql`
   }
 `;
 
+
 const GET_USER_BY_ID = gql`
   query GetUserById($id: ID!) {
     getUserById(id: $id) {
@@ -24,6 +25,7 @@ const GET_USER_BY_ID = gql`
     }
   }
 `;
+
 
 const CREATE_USER = gql`
   mutation CreateUser(
@@ -41,25 +43,16 @@ function App() {
   const [newUser, setNewUser] = useState({});
 
   const {
-    
-    
     data: getUsersData,
-
     error: getUsersError,
-
     loading: getUsersLoading,
-
-  } = useQuery(GET_USERS);
+    } = useQuery(GET_USERS);
 
 
   const {
     data: getUserByIdData,
-
-    loading: getUserByIdLoading }
-    
-    = useQuery(
-    GET_USER_BY_ID,
-    {
+    loading: getUserByIdLoading
+    }= useQuery(GET_USER_BY_ID,{
       variables: { id:"1"},
     }
   );
@@ -107,6 +100,7 @@ function App() {
         <button onClick={handleCreateUser}> Create User</button>
       </div>
 
+
       <div>
         {getUserByIdLoading ? (
           <p> Loading user...</p>
@@ -120,6 +114,7 @@ function App() {
       </div>
 
       <h1> Users</h1>
+      
       <div>
         {" "}
         {getUsersData.getUsers.map((user) => (
@@ -130,6 +125,7 @@ function App() {
           </div>
         ))}{" "}
       </div>
+
     </>
   );
 }
